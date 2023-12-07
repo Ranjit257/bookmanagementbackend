@@ -1,10 +1,16 @@
 import express from 'express';
-import { PORT, mongoDBURL } from './config.js';
+import { mongoDBURL } from './config.js';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import bookrouter from './routes/booksRoute.js';
 
 const app = express();
+dotenv.config();
+mongoose.set('strictQuery', false);
+const PORT = process.env.PORT || 4000;
+//const mongoDBURL = process.env.mongoDBURL;
+
 //use cors policy
 app.use(cors());
 
